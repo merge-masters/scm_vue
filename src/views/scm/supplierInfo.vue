@@ -110,7 +110,7 @@
                 <td>{{ item.mng_tel }}</td>	
                 <td>{{ item.email }}</td>	
                 <td>{{ item.warehouse_nm }}</td>	
-                <td><button>수정</button></td>	
+                <td><button @click="updateSupplier(item.supply_cd)">수정</button></td>	
             </tr>
           </template>
         </tbody>
@@ -259,6 +259,15 @@ export default {
     saveSupplier: async function() {
       const modal = await openModal(supplierModal, {
         title: "공급처 관리 - 등록",
+        action_value: "I"
+      })
+    },
+
+    updateSupplier: async function(supply_cd) {
+      const modal = await openModal(supplierModal, {
+        title: "공급처 관리 - 수정",
+        action_value : "U",
+        supply_code : supply_cd
       })
     },
 
